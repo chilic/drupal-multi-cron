@@ -4,10 +4,16 @@
 __author__ = 'Chilic'
 
 import os
-
-BASE_DIR = "/var/www"
+import sys
 
 if __name__ == "__main__":
+
+    if len(sys.argv) != 2:
+        print('Please pass second parameter.')
+        exit()
+
+    BASE_DIR = sys.argv[1]
+
     for root, dirs, files in os.walk(BASE_DIR):
         if 'settings.php' in files:
             sites_path, uri = os.path.split(root)
